@@ -4,11 +4,12 @@ const axios = require('axios');
 const app = express();
 const port = 8008;
 
-async function getNumbersFromUrl(url) {
+async function getNumbersFromUrl(url) 
+{
   try {
-    const response = await axios.get(url);
-    if (response.status === 200 && response.data.numbers && Array.isArray(response.data.numbers)) {
-      return response.data.numbers;
+    const res = await axios.get(url);
+    if (res.status === 200 && res.data.numbers && Array.isArray(res.data.numbers)) {
+      return res.data.numbers;
     }
   } catch (error) {
     console.error(`Error fetching numbers from URL ${url}:`, error.message);
@@ -35,5 +36,5 @@ app.get('/numbers', async (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`number-management-service is running on port ${port}`);
+  console.log(`number management service is running on port ${port}`);
 });
